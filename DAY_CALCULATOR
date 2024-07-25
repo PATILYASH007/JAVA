@@ -1,0 +1,83 @@
+public class DAY_CALCULATOR
+{
+	public static void main(String args[])
+	{
+		int date=Integer.parseInt(args[0]);
+		int month=Integer.parseInt(args[1]);
+		int year=Integer.parseInt(args[2]);
+		
+		int daypassed=date;
+		 
+		int dayofmonth[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+		
+		for(int i=0;i<month;i++)
+		{
+			daypassed = daypassed+dayofmonth[i];
+		}
+	 
+		if(year%4==0 && month>2)
+		{
+			daypassed=daypassed+1;
+		}
+		
+		System.out.println("TOTAL DAYS PASSED IN YEAR: " + daypassed);
+		
+		year=year-1;
+		
+		int mf=year%400;
+		 
+		int y=mf/100;
+		int totalyear=mf%100;
+		
+		int remaining =year-totalyear;
+			
+			int leap=0;
+			
+		for(int i=remaining+1;i<=year;i++)
+		{
+			if(i%4==0 && i%100!=0)
+			{
+				leap++;
+			}
+			else
+			{
+				if(i%400==0 && i%100==0)
+				{
+					leap++;
+				}
+			}
+		}
+		
+		int oddyear=  totalyear-leap;
+		
+		int totaldays=daypassed+(y*5)+oddyear+(leap*2);
+		int numofoddday=totaldays%7;
+		
+		System.out.println("NUMBER OF ODD DAYS:" + numofoddday);
+		
+		switch(numofoddday)
+		{
+			case 0:
+			System.out.println("the day is sunday");
+			break;
+			case 1:
+			System.out.println("the day is Monday");
+			break;
+			case 2:
+			System.out.println("the day is Tuesday");
+			break;
+			case 3:
+			System.out.println("the day is Wendsday");
+			break;
+			case 4:
+			System.out.println("the day is thrusday");
+			break;
+			case 5:
+			System.out.println("the day is Friday");
+			break;
+			case 6:
+			System.out.println("Saturday");
+			break;
+		}
+	}
+}
