@@ -1,0 +1,39 @@
+import java.util.Scanner;
+class IRTest{
+    public static void main(String[] args){
+        Scanner obj1=new Scanner(System.in);
+        System.out.print("Enter the Balance: ");
+        double b1=obj1.nextDouble();
+
+        Scanner obj2=new Scanner(System.in);
+        System.out.print("Enter the Balance: ");
+        double b2=obj2.nextDouble();
+        Saving_acc C1= new Saving_acc(b1);
+        Saving_acc C2= new Saving_acc(b2);
+        
+        Saving_acc.modify_IR(4.0);
+        Scanner obj=new Scanner(System.in);
+        System.out.print("Enter numbers of months you want to save: ");
+        int b=obj.nextInt();
+        
+        for(int i=0;i<b;i++){
+            C1.monthly_IR();
+            C2.monthly_IR();
+        }
+        
+
+
+        System.out.println("------------total Balance with 4% IR------------");
+        C1.monthly_IR();
+        C1.display();
+        C2.monthly_IR();
+        C2.display();
+
+        Saving_acc.modify_IR(5.0);
+        System.out.println("------------total Balance with 5% IR------------");
+        C1.monthly_IR();
+        C1.display();
+        C2.monthly_IR();
+        C2.display();
+    }
+}
